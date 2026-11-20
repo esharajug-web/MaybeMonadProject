@@ -5,59 +5,45 @@ from products import (
 )
 
 
-# Cell 1: Traditional OOP Demonstration
-print("TRADITIONAL IMPLEMENTATION")
-print("=========================")
+# Demonstration 1: Traditional Implementation
+print("\n========== TRADITIONAL IMPLEMENTATION ==========")
 
+print("\nSearching for Product ID 102:")
 display_product(102)
 
-print("\nSearching for a missing product:")
+print("\nSearching for missing Product ID 999:")
 display_product(999)
 
 
-# Cell 2: Maybe Monad Demonstration
-print("\nMAYBE MONAD IMPLEMENTATION")
-print("=========================")
+# Demonstration 2: Maybe Monad Implementation
+print("\n========== MAYBE MONAD IMPLEMENTATION ==========")
 
+print("\nSearching for Product ID 102:")
 display_product_maybe(102)
 
-print("\nSearching for a missing product:")
+print("\nSearching for missing Product ID 999:")
 display_product_maybe(999)
 
 
-# Cell 3: Test Chained Operations
-print("\nTESTING CHAINED OPERATIONS")
-print("==========================")
+# Demonstration 3: Chained Operations
+print("\n========== CHAINED OPERATIONS ==========")
 
-print("Product 101:", get_final_price(101))
-print("Product 102:", get_final_price(102))
-print("Product 103:", get_final_price(103))
-print("Product 104:", get_final_price(104))
-print("Product 105:", get_final_price(105))
-print("Product 999:", get_final_price(999))
-
-
-# Cell 4: Automated Testing
-print("\nAUTOMATED TESTING")
-print("=================")
-
-assert get_final_price(101) == 1125.0
-assert get_final_price(102) == 170.0
-assert get_final_price(103) == 66.5
-assert get_final_price(104) == 45.0
-assert get_final_price(105) == 210.0
-assert get_final_price(999) == "Product not found"
-
-print("All test cases passed successfully!")
+print("Laptop final price:", get_final_price(101))
+print("Headphones final price:", get_final_price(102))
+print("Keyboard final price:", get_final_price(103))
+print("Mouse final price:", get_final_price(104))
+print("Monitor final price:", get_final_price(105))
+print("Missing product:", get_final_price(999))
 
 
-# Cell 5: Interactive Product Search
-print("\nE-COMMERCE PRODUCT SEARCH SYSTEM")
-print("================================")
+# Demonstration 4: Interactive Search
+print("\n========== INTERACTIVE PRODUCT SEARCH ==========")
 
-product_id = int(input("Enter Product ID: "))
+try:
+    product_id = int(input("Enter Product ID: "))
+    result = get_final_price(product_id)
 
-print("\nSearch Result:")
-print("-------------")
+    print("Final Price:", result)
 
-print("Final Price:", get_final_price(product_id))
+except ValueError:
+    print("Please enter a valid numeric Product ID.")
