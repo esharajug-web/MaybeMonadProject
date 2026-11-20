@@ -36,6 +36,22 @@ def test_maybe_monad():
     result = Maybe(None).get_or_else(0)
     assert result == 0
 
+    # Test that map does not execute when the value is None
+    result = Maybe(None).map(lambda x: x * 2)
+    assert result.value is None
+
+    # Test that flat_map does not execute when the value is None
+    result = Maybe(None).flat_map(lambda x: Maybe(x + 5))
+    assert result.value is None
+
+    # Test is_present
+    assert Maybe(10).is_present() is True
+    assert Maybe(None).is_present() is False
+
+    # Test is_empty
+    assert Maybe(10).is_empty() is False
+    assert Maybe(None).is_empty() is True
+    
     print("Maybe Monad tests passed!")
 
 
