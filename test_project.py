@@ -56,9 +56,43 @@ def test_maybe_monad():
 
 
 # Run all tests
+def test_maybe_filter():
+    # Value satisfies the condition
+    result = Maybe(10).filter(lambda x: x > 5)
+    assert result.value == 10
+
+    # Value does not satisfy the condition
+    result = Maybe(3).filter(lambda x: x > 5)
+    assert result.value is None
+
+    # Empty Maybe remains empty
+    result = Maybe(None).filter(lambda x: x > 5)
+    assert result.value is None
+
+    # Filtering a string
+    result = Maybe("Python").filter(lambda x: len(x) > 3)
+    assert result.value == "Python"
+
+    print("Maybe filter tests passed!")
+
+def test_maybe_extra_methods():
+    assert Maybe(10).contains(10) is True
+    assert Maybe(10).contains(5) is False
+    assert Maybe(None).contains(10) is False
+
+    assert Maybe(10).exists(lambda x: x > 5) is True
+    assert Maybe(3).exists(lambda x: x > 5) is False
+    assert Maybe(None).exists(lambda x: x > 5) is False
+
+    print("Maybe extra methods tests passed!")    
+
+    
+
 if __name__ == "__main__":
     test_product_prices()
     test_missing_product()
     test_maybe_monad()
+    test_maybe_filter()
+    test_maybe_extra_methods()
 
     print("\nAll tests passed successfully!")

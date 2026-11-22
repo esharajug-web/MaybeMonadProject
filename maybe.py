@@ -25,3 +25,18 @@ class Maybe:
             return default_value
 
         return self.value
+
+    def filter(self, predicate):
+        if self.is_empty():
+            return Maybe(None)
+
+        if predicate(self.value):
+            return self
+
+        return Maybe(None)
+
+    def contains(self, value):
+        return self.is_present() and self.value == value
+
+    def exists(self, predicate):
+        return self.is_present() and predicate(self.value)

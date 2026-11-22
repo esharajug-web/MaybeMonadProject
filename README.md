@@ -82,3 +82,20 @@ The Maybe class implements:
 - map()
 - flat_map()
 - get_or_else()
+
+
+## Additional Maybe Methods
+
+The Maybe class was extended with additional methods to improve safe value handling:
+
+- `filter(predicate)`: Keeps the value if it satisfies the given condition; otherwise, returns an empty Maybe.
+- `contains(value)`: Checks whether the Maybe contains a specific value.
+- `exists(predicate)`: Checks whether the stored value satisfies a given condition.
+
+The `get_or_else()` method was also corrected to properly return the stored value when present or the default value when empty.
+
+## Additional Testing
+
+Additional automated tests were implemented to verify the `filter()`, `contains()`, and `exists()` methods, including cases involving valid values, conditions that fail, and empty Maybe values.
+
+All automated tests passed successfully.
